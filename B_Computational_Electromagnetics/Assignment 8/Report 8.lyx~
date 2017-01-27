@@ -1,0 +1,238 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25cm
+\topmargin 1.25cm
+\rightmargin 1.25cm
+\bottommargin 1.25cm
+\headheight 1.25cm
+\headsep 1.25cm
+\footskip 1.25cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+EM Wave in an Anisotropic medium
+\end_layout
+
+\begin_layout Author
+Sankeerth.D
+\begin_inset Newline newline
+\end_inset
+
+EE13B102
+\begin_inset Newline newline
+\end_inset
+
+Electrical Engineering
+\end_layout
+
+\begin_layout Abstract
+The waveform characteristics when the wave is made to propagate in an anisotropi
+c medium is explore here.
+ The axes arec hosen to be the principal axes, so that only the diagonal
+ components are nonzero, and anisotropy in permittivity is only considered.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The update equations for constant epsilonx, epsilony and epsilonz have been
+ constructed and invoked in both TE and TM case.
+ A Yee cell has been chosen here, with the topleft corner containing 0 electric
+ field, and bottom right corner portion having 0 magnetic field.
+ The input is taken from two png file, one containing RGB information about
+ the succeptibility in x,y and z tensor components and the orther containing
+ the position of the source.
+\end_layout
+
+\begin_layout Standard
+The simulation domain is 10 micrometer.
+ 750 pixels have been used left to right and hence the grid spacing has
+ been chosen to be 10micrometer/750 = 13 nanometer.
+ The Amplitude of the sinusoidal source is chosen to be 1 unit, in both
+ TE and TM case.
+\end_layout
+
+\begin_layout Standard
+The epsilon matrix has been chosen such that epsilon x = 8, epsilony = epsilonz
+ = 1.
+\end_layout
+
+\begin_layout Section
+Point source case
+\end_layout
+
+\begin_layout Standard
+For the case of a point source placed at the center, for TM polatization,
+ one can see that the equations do not get modified at all, as all equations
+ with the epsilonx term becomes zero.
+ Only dependance is there for epsilonz, which is chosen to be 1 anyway.
+ Hence it can be expected that there is absolutely no difference between
+ this case and the case with a point source in free space.
+ The response obtained is as shown below: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename fig1.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+For the TE case, the epsilonx conponent gets added in to the equation.
+ the speed in the x direction should be expected to be 1/sqrt(2) times c.
+ Hence with time, the output will resemble an oval, with it's major axis
+ along the y axis and minot axis along x direction.
+ the ratio of these lengths is sqrt(8).
+ The response is as shown below:
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename fig2.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Section
+Line sources
+\end_layout
+
+\begin_layout Standard
+This case is not much different from the one above.
+ When the source is kept vertically (along y),it's speed is supposed to
+ be slower by a factor of sqrt(8),in the caseof TE.
+ The response is shown below:
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename fig3.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the case of TM, it will be the same response as for the free space case:
+ the light moves at the speed of light in vacuum.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+When the line source kept horizontally (along the x axis), the TE wave moves
+ at the speed of light in vacuum, as epsilonx doesn't affect any of the
+ equations.
+ The wave is shown below:
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

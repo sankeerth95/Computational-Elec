@@ -1,0 +1,293 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25cm
+\topmargin 1.25cm
+\rightmargin 1.25cm
+\bottommargin 1.25cm
+\headheight 1.25cm
+\headsep 1.25cm
+\footskip 1.25cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Week 5: Quarter Wave Transformer
+\begin_inset Newline newline
+\end_inset
+
+with FDTD in 1D Systems
+\end_layout
+
+\begin_layout Author
+Sankeerth.D
+\begin_inset Newline newline
+\end_inset
+
+EE13B102
+\begin_inset Newline newline
+\end_inset
+
+Electrical Engineering
+\end_layout
+
+\begin_layout Abstract
+Transmittance can be increased by introducing a qwarter wave plate inbetween
+ the slab and air.
+ Impedance matching, ideally, wil make all the light pass through, reducing
+ back reflection.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Again, the normallized equation is solved here, and the units and differential
+ increments are adjusted to fit the problem parameters.
+ QWT's have their refractive index as the geometric mean of the product
+ of the refractive indices of the adjascent media.
+ Here, two of these are used on either side of the slab.
+\end_layout
+
+\begin_layout Section
+Selection of Units
+\end_layout
+
+\begin_layout Standard
+Where H1 and E1 are the scaled E and H.
+ Scale the units of x and t to obtain equations identical to the ones shown
+ above.
+ for the frequency of 2.4 GHz, In the middle layer, it turns out that the
+ ripples are too high for a time step of 0.333e-10 seconds.
+ So, for this case, It's conveniant to choose t to be in multiples of 0.1666e-10,
+ and x to be in multiples of 0.5e-2 metres.
+ Then, the update equations will be identical to the normallized case.
+\end_layout
+
+\begin_layout Standard
+1 foot occupies 30 centimeter, so 60 units of x should do.
+ The length of the quarter wave plate is 1.68 centimeter.
+ 3 units of x, which is 1.5 centimeter, is used here.
+ Frequency of 2.4 GHz is obtained using a sinusoidal source, and source is
+ on for 3 cycles.
+ This creates a frequency spread, roughly between 2.2 and 2.6 GHz.
+ The source spectrum is as shown an follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename source.jpg
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The total length is 300 units, which is 150 centimeter.
+ To record only one time reflection, and provent multiple reflections, the
+ slab is placed at 2*xdim/3 from the source.
+\end_layout
+
+\begin_layout Section
+Observation
+\end_layout
+
+\begin_layout Standard
+On runnning the ssimulation for 700 time units, which is 11.66 nanoseconds,
+ a single reflection and transmission can be captured.
+\end_layout
+
+\begin_layout Standard
+Before introducong the QWT, the reflectance and transmittance are as follows
+ (for epsilon =12, mu = 1):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename withoutQWT.jpg
+	width 45line%
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename withoutQWTsource.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A large portion of the wave got reflected back in this case.
+ Observe that less than 80 percent of the total energy is reflected+transmitted
+ in the first reflection.
+ Also, as expected, as the permittivities are independant of frequency,
+ the characteristics are also independant of frequency (around 2.4 GHz.).
+ Since the medium is nonmagnetic (unlike in the previous case where there's
+ mu = 2) Fresnel's equations can be applied.
+\begin_inset Formula 
+\[
+Reflectance=\frac{(n-1)^{2}}{(n+1)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where n = sqrt(12).
+ Plugging this in, we get reflectance = 0.305, close to whar we get in simulation.
+\end_layout
+
+\begin_layout Standard
+On placing a dielectric across the 1 foot slab, there would be a somewhat
+ slower transition between the media and it is reasonable to expect a higher
+ transmittance.
+ Also, since the QWT is designed such that reflective component destructively
+ interferes across the quarter wave, reflectance reduces sharply, as can
+ be seen below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename withQWT.jpg
+	width 45line%
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename withQWTsource.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One can clearly see thet these lines aren't horizontal.
+ This is because we are measuring the interfered portion of wave (across
+ the QWT).
+ Since there's a frequency spread, and we have used a 1.5 centimeter QWT,
+ the ideal transmission happens at 2.6 GHz.
+ If we were to use a more accurate 1.68 cm, we would've gotten the peak at
+ 2.4 GHz, but this is good enough for a demonstration.
+ As expected, most of the light passes through.
+\end_layout
+
+\begin_layout Section
+Result and Discussion
+\end_layout
+
+\begin_layout Standard
+Note that this probem can be solved using the same update equations and
+ different spacing 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+.
+ The discretization chosen here is such that in the high refractive index
+ material, the gaussian pulse is not very sharp.
+ If it were to be sharp, Due to courant factor, the inaccuracy and error
+ in simulation increases by multiplee folds, and numerous ripples can be
+ seen in the medium.
+\end_layout
+
+\begin_layout Standard
+As one can see, The medium is not frequency selective, and The reason for
+ the very small slope in the second case is because what we measure is the
+ interfered light, the sum of it's reflected components across 1.68 centimeter.
+ Since defferent frequencies have different powers after this interference,
+ we see this frequency dependnce.
+\end_layout
+
+\end_body
+\end_document

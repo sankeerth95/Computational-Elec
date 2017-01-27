@@ -1,0 +1,9 @@
+ant:
+<ant>
+  <mkdir dir="C:\Users\Sankeerth Durvasula\Desktop\Semester 6\B_Computational Electromagnetics\GUI\SimApp\for_redistribution" />
+  <mkdir dir="C:\Users\Sankeerth Durvasula\Desktop\Semester 6\B_Computational Electromagnetics\GUI\SimApp\for_testing" />
+</ant>
+mcc -C -o SimApp -W WinMain:SimApp -T link:exe -d 'C:\Users\Sankeerth Durvasula\Desktop\Semester 6\B_Computational Electromagnetics\GUI\SimApp\for_testing' -v 'C:\Users\Sankeerth Durvasula\Desktop\Semester 6\B_Computational Electromagnetics\GUI\SimApp.m' 
+Test checkout of feature 'Compiler' failed.
+
+mcc failed.

@@ -1,0 +1,159 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25cm
+\topmargin 1.25cm
+\rightmargin 1.25cm
+\bottommargin 1.25cm
+\headheight 1.25cm
+\headsep 1.25cm
+\footskip 1.25cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+EM Wave in Drude-material
+\end_layout
+
+\begin_layout Author
+Sankeerth.D
+\begin_inset Newline newline
+\end_inset
+
+EE13B102
+\begin_inset Newline newline
+\end_inset
+
+Electrical Engineering
+\end_layout
+
+\begin_layout Abstract
+With a given plasma frequency and collision, various configurations of EM
+ waves in drude-type material are explored.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The convolution is the only extra operation that needs to be performed when
+ compared to the previous reports.
+ We are convolving an exponential function (of drude material) with the
+ fields, and then differentiating this.
+ Instead, first, the exponential is differentiated, and then convilution
+ is performed.
+ The values to be convolved are stored in an array.
+\end_layout
+
+\begin_layout Section
+Observations
+\end_layout
+
+\begin_layout Standard
+On running the simulation in the case where the top half is filled with
+ the drude material, the following can be observed.
+ Clearly, since we can see the spread in the wave width, it can be seen
+ that different frequencies travel at different speeds in this medium, compared
+ to the air medium below.
+\end_layout
+
+\begin_layout Standard
+The medium on top is the drude material, and the one on the bottom is vacuum.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename fig1.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Below the plasma frequency, the wave does not survive in the medium.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename fig2.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

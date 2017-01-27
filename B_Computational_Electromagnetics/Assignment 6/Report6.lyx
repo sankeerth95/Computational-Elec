@@ -1,0 +1,211 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25cm
+\topmargin 1.25cm
+\rightmargin 1.25cm
+\bottommargin 1.25cm
+\headheight 1.25cm
+\headsep 1.25cm
+\footskip 1.25cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Dielectric Waveguide Simulation by FDTD
+\end_layout
+
+\begin_layout Author
+Sankeerth.D
+\begin_inset Newline newline
+\end_inset
+
+EE13B102
+\begin_inset Newline newline
+\end_inset
+
+Electrical Engineering
+\end_layout
+
+\begin_layout Abstract
+Electromagnetic wave with a sinusoidal source is sent through a dielectric
+ medium.
+ Coupling between two waveguides is also explored in this assignment
+\end_layout
+
+\begin_layout Section
+Set up
+\end_layout
+
+\begin_layout Standard
+The frequency used here is 1 gigahertz, of the order used in radio communicarion
+s.
+ A straight dielectric waveguide is placed next to a small line source which
+ emits E waves at 0.7 gigahertz, 1 V/m amplitude.
+\end_layout
+
+\begin_layout Standard
+1 gigaherz leads to a wavelength in the order of 10 centimeter = 0.1 meter
+ inside the dielectric.
+ In order to observe this clearly, one wavelength length is chosen to be
+ of around 50 units.
+ Hence grid spacing = 0.1/50 = 0.001 meter is chosen.
+ The sine source is run for 1500 time units
+\end_layout
+
+\begin_layout Standard
+PML boundary condition has been applied, with the conductivity of the matched
+ layer varying as a square law from 0 to 1 ohm-inverse.
+ 1 ohm-inverse is chosen by trial and error.
+ This chosen value seems to work well with not much reflection across the
+ layers.
+ The thicknss of the layer is chosen to be 80 units, which is 16 centimeter
+ of PML cladding.
+\end_layout
+
+\begin_layout Section
+Observation
+\end_layout
+
+\begin_layout Standard
+On running the simulation for a line source near the absorbing boundary,
+ we can observe that the waveguide carries the wave along with it, and transport
+s it across.
+ Also observe that there are no boundary reflections,indicationg that the
+ absorbing boundary condition is working as expected.
+ The simulation results are shown as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename fig1.jpg
+	width 70line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+When two waveguides are placed near to each other, we can observe that they
+ can interfere with each other's signal.
+ We can observe this kind of coupling in this case.
+ Another dielectric is placed just below the first dielectric, and the source
+ remains as it was before.
+ After a while, observe that the EM wave propagates through the first waveguide,
+ then it transfers it's power to the second waveguide.
+ This buildup of wave in the second waveguid can be observed from the evanascent
+ wave emanating from the first waveguide.
+ Also, after a while, it can be seen that the wave in the second waveguide
+ starts to lose it's power, and the wave is back in the first waveguide.
+ A 0.7Ghz wave is sent into one of the waveguide and a grid spacing of 13
+ nm is assigned.
+\end_layout
+
+\begin_layout Standard
+The results of the simulation are as shown:
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename fig2.jpg
+	width 70line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The frequency with which this power switching happens appears to be dependant
+ on the distance between the waveguides.
+ On bringing the waveguides closer, the coupling can be seen to be occuring
+ more frequently/ within smaller distances.
+\end_layout
+
+\begin_layout Section
+Result and Discussion
+\end_layout
+
+\begin_layout Standard
+Whenever this type of dielectric waveguide has bends/turns, the wave only
+ spills out and does not efficiently go into the bent out branch.
+ Hence this type of waveguide can only be used where a signal is taken in
+ a straight line.
+\end_layout
+
+\end_body
+\end_document

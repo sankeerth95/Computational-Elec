@@ -1,0 +1,334 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25cm
+\topmargin 1.25cm
+\rightmargin 1.25cm
+\bottommargin 1.25cm
+\headheight 1.25cm
+\headsep 1.25cm
+\footskip 1.25cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Week 4: Handling units with FDTD in 1D Systems
+\end_layout
+
+\begin_layout Author
+Sankeerth.D
+\begin_inset Newline newline
+\end_inset
+
+EE13B102
+\begin_inset Newline newline
+\end_inset
+
+Electrical Engineering
+\end_layout
+
+\begin_layout Abstract
+Solving the normallized update equations using 1-dimentional FDTD, for different
+ cases: with/without absorbing boundary conditions and checking for energy
+ losses/conservation with respect to frequency.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The ormallized update equations have been solved here for the given problem.
+ 
+\end_layout
+
+\begin_layout Standard
+The update equations solved in the program are as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\nabla X\overrightarrow{E} & = & -\frac{\partial\overrightarrow{H}}{\partial t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\nabla X\overrightarrow{H} & = & \frac{\partial\overrightarrow{E}}{\partial t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to get the solution of the original equation form the bottom two
+ equations, one should understand the scaling of units that has been done.
+ Firstly, E and H have been scald by some factor, and xand t have also been
+ scaled.
+ Notice that thereare only two things that can be modified, i.e, x/t and
+ E/H are changed, in accordance with the equation above.
+ This constrains the scale factor if E/H to be 
+\begin_inset Formula $\sqrt{\frac{\mu_{0}}{\epsilon_{0}}}$
+\end_inset
+
+.
+ So, the new equations become:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\nabla X\overrightarrow{E1} & = & -\sqrt{\mu_{0}\epsilon_{0}}\frac{\partial\overrightarrow{H1}}{\partial t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\nabla X\overrightarrow{H}1 & = & \sqrt{\mu_{0}\epsilon_{0}}\frac{\partial\overrightarrow{E1}}{\partial t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where H1 and E1 are the scaled E and H.
+ Scale the units of x and t to obtain equations identical to the ones shown
+ above.
+ Choose t to be in multiples of 0.333e-10, and x to be in multiples of 1e-2
+ units.
+ Then, the update equations will be identical to the normallized case.
+ Now it's time to choose 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+.
+ Choose 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ to be 1 unit, i.e, 1 centimeter.
+ Automatically, since the Courant factor is set as 0.96, 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ is 0.333e-10 seconds.
+\end_layout
+
+\begin_layout Section
+Setting the problem
+\end_layout
+
+\begin_layout Standard
+1 foot occupies 30 centimeter, so 30 units of x should do.
+ Also, to obtain frequencies inbetween 0 to 1 Gigahertz, i.e, For this frequency
+ range, a gaussian can be used, with it's variance being of the order of
+ 1 nanosecond.
+ Since one time step is 0.33e-10 seconds, Choose the variance as 7.9 gives
+ us the required frequency.
+ The Source spectrum is as shown an follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename source.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Only the first time reflections and transmissions are to be considered.
+ So, in order to do this, It's conveniant to place the dielectric a little
+ bit to the right, so that the simulation can stop just before multiple
+ reflection terms go through either of the detectors.
+ Hence place the dielectric at (2/3)*xdim position from the origin.
+\end_layout
+
+\begin_layout Standard
+Vaccuum padding is kept between boundary and dielectric.
+ xdim = 200 units, which is 200 centimeter space is chosen.
+ Sampling time for the fft setup is 0.333e-10 seconds, and proportionally,
+ the scaling is done in frequency.
+ Total number of time steps = 380, i.e, for approximately 12 nanoseconds.
+ This is just enough time to record one transmission and one reflection
+ (No multiple reflection is recorded).
+\end_layout
+
+\begin_layout Standard
+After the simulation completes, Taking fft and measuring power of reflected
+ and transmitted signal, it caan be expected that, since there's no frequency
+ dependance, all frequencies have equal proportions of reflected and transmitted
+ parts and is a straight horizontal line.
+ Also, Since there's a little bit of light left due to multiple reflections,
+ the power ratio is only close to 1, and not exactly 1.
+\end_layout
+
+\begin_layout Section
+Observation
+\end_layout
+
+\begin_layout Standard
+Running the simulation, the Gaussian Wave, frequency width (the significant
+ part) is 0 to 1 GHz.
+ The characteristics are as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Refl,Trns.jpg
+	width 45line%
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename EnerRatio.jpg
+	width 45line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The magnetic permeability is 2 here, which means Fresnel's euations cannot
+ be applied.
+ Accordind to fresnel's equation (for the case of epsilon = 12, mu = 1),
+ the reflectance = 0.31.
+ This is in sharp contrast to that since we get reflectance of 0.1.
+ Also, due to the residual light remaining after the first reflection, inside
+ the slab, the energy ratio doesn't show us 1.
+ Around 10% power remains andundergoes multiple reflections (more than 2).
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Result and Discussion
+\end_layout
+
+\begin_layout Standard
+Note that this probem can be solved using the same update equations and
+ different spacing 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+.
+ The discretization chosen here is such that in the high refractive index
+ material, the gaussian pulse is not very sharp.
+ If it were to be sharp, Due to courant factor, the inaccuracy and error
+ in simulation increases by multiplee folds, and numerous ripples can be
+ seen in the medium.
+\end_layout
+
+\begin_layout Standard
+As one can see, The medium is not frequency selective, and The reason for
+ the very small slope is because
+\end_layout
+
+\end_body
+\end_document
